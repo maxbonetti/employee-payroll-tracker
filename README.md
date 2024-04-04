@@ -10,6 +10,6 @@ starter code from edX bootcamps
 
 
 # Technology
-HTML 5, CSS 3, JavaScript (ES13)
+HTML 5, CSS 3, JavaScript (ES6 +)
 
 # Pictures
