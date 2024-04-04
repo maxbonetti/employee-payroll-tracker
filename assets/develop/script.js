@@ -1,28 +1,21 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 const employeesArray = [];
-// ARRAY HERE FOR MY CODE TO SEE IF IT WORKED
-//const objectArray = [
-// {firstName:`Cayden`,lastName:`Humpphrees`,salary:110000},
-// {firstName:`Donny`,lastName:`Nicholas`,salary:60000},
-// {firstName:`Nick`,lastName:`Jones`,salary:45000},
-// {firstName:`Max`,lastName:`Bonetti`,salary:125000},
-// {firstName:`Jerry`,lastName:`Billyboy`,salary:640000},
-// {firstName:`Sarah`,lastName:`Andrews`,salary:93000}
-// ]
 // Collect employee data
+//we want to push the 3 answers into an object array
+//
 // TODO: Get user input to create and return an array of employee objects
-const collectEmployees = function(fn, ln, s) {
-  if (fn !== undefined && ln !== undefined && s !== null||undefined){
-  employeesArray.push({firstName:fn, lastName:ln, salary:s});
+const collectEmployees = function(fn, ln, s) { //paramters we are looking for inside the object array for the function to push appropriate info into array
+  if (fn !== undefined && ln !== undefined && s !== null||undefined){ //dont show unanswered fields in table/console
+  employeesArray.push({firstName:fn, lastName:ln, salary:s});//pushed all new objiects to front of the array
   }
-  return employeesArray
+  return employeesArray //return the names into the array to be logged
   console.log(employeesArray);
   }
   
-  console.log(`int`, employeesArray);
+  console.log(`int`, employeesArray); // int to show how many objects are in the array and empArray to display it
   console.log(`-----------------`);
-  collectEmployees(`Max`,`Bo`,125000);
+  //collectEmployees(`Max`,`Bo`,125000);// parameters
 
 
 
@@ -31,7 +24,7 @@ const displayAverageSalary = function(employeesArray) {
   // TODO: Calculate and display the average salary
   // get the salary, add all salarys up, then divide salariesTotal by salaryValueTotal
   // to = displayAverageSalary
-  let totalSalary = 0;
+  let totalSalary = 0.0;
   for (let i = 0; i < employeesArray.length; i++) {
     totalSalary += employeesArray[i].salary;
   }
@@ -56,29 +49,25 @@ const getRandomEmployee = function(employeesArray) {
 }
 
 const addEmployees = function() {
-  let addAnother = true; // Initialize addAnother flag
-  
-  // Loop to add multiple employees until user chooses to stop
-  while (addAnother) {
     // Prompt for first name
+    let addEmployee = true 
+    while (addEmployee){
     const firstName = prompt("Add first name:");
     
     // Prompt for last name
     const lastName = prompt("Add last name:");
     
     // Prompt for salary
-    let salary;
-    do {
-      salary = parseFloat(prompt("Add salary:")); // Convert input to float
-    } while (isNaN(salary)); // Continue prompting until valid salary is provided
-    
-    // Add the employee to the array
+    const salary = parseFloat(prompt(`Add salary:`))
+    addEmployee = confirm("Do you want to add another employee?", true);
+    if (firstName && lastName && salary){
     employeesArray.push({ firstName, lastName, salary });
-    
-    // Ask user if they want to add another employee
-    addAnother = confirm("Do you want to add another employee?");
+    }else
+    alert(`Field's cannot be empty.`);
   }
-  
+  // TODO //
+  // Add the employee to the array
+  // Ask user if they want to add another employee
   // After all employees are added, update the display
   displayEmployees(employeesArray);
   displayAverageSalary(employeesArray);
@@ -88,6 +77,12 @@ const addEmployees = function() {
 // Add event listener to 'Add Employees' button
 const addBtn = document.querySelector('#add-employees-btn');
 addEmployeesBtn.addEventListener('click', addEmployees);
+
+
+
+
+
+
 
 /*
   ====================
